@@ -1,4 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import logo from './buttonStuff.svg';
+
+
+function App(){
+  return (
+    <div className="App">
+      <header className="App-header">
+      <a href="/"> 
+      {/* function name to be excecuted onclick of the button */}
+        <img src={logo} className="App-logo" alt=" " />
+      </a>
+      </header>
+    </div>
+  );
+}
 
 const GPUInfoComponent = () => {
   const [gpuInfo, setGPUInfo] = useState(null);
@@ -36,3 +51,4 @@ const GPUInfoComponent = () => {
 };
 
 export default GPUInfoComponent;
+// export default App;
