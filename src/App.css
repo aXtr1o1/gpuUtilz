@@ -9,20 +9,9 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite .0002s linear;
   }
 }
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
 
 .App-header {
   background-image: url("asserts/PoInTYo_.jpeg");
@@ -36,6 +25,22 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .App-header {
+    background-image: url("asserts/PoInTYo_ inv.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
 }
 
 .App-link {
