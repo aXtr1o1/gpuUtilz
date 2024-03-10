@@ -7,9 +7,16 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 
-webpage = requests.get('https://en.wikipedia.org/wiki/CUDA')
+wiki_webpage = requests.get('https://en.wikipedia.org/wiki/CUDA')
+cudnn_archive = requests.get("https://developer.nvidia.com/rdp/cudnn-archive")
 
-cuda_table = BeautifulSoup(webpage.text,'html.parser')
+cudnn_list = BeautifulSoup(cudnn_archive.text,'html.parser')
+list_contents = cudnn_list.find("div",class_="panel-group")
+a_tag_list = [a.get_text(strip=True) for a in list_contents.find_all('a')]
+print(a_tag_list)
+
+
+cuda_table = BeautifulSoup(wiki_webpage.text,'html.parser')
 table_contents = cuda_table.find_all("table",class_="wikitable")
 
 compute_compatibility = table_contents[1]
