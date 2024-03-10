@@ -29,7 +29,7 @@ for x in table:
 
 
 with open('Cuda_version.txt','w') as f:
-    f.write("\tCuda Version Bruh\t\n")
+    f.write("\tCuda Version Bruh\t")
     for i in range(len(key)):
         text=str(key[i])+"\t:\t"+str(val[i])+"\n"
         f.write(text)
