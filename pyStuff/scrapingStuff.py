@@ -26,9 +26,6 @@ table_contents = cuda_table.find_all("table",class_="wikitable")
 compute_compatibility = table_contents[1]
 Nvidia_GPU_BoardProducts = table_contents[2]
 
-compute_compatibility = table_contents[1]
-Nvidia_GPU_BoardProducts = table_contents[2]
-
 text=""
 table=Nvidia_GPU_BoardProducts.find_all('tr')
 table=table[1:]
