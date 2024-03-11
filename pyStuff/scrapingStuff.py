@@ -38,13 +38,13 @@ for x in table:
             row_vals.append(td.text.strip())
         val.append(row_vals[1:])
 
-
-with open('Cuda_version.txt','w') as f:
-    f.write("\tCuda Version Bruh\t")
-    for i in range(len(key)):
-        text=str(key[i])+"\t:\t"+str(val[i])+"\n"
-        f.write(text)
-print("Success")
+if not os.path.exists('Cuda_version.txt'):
+    with open('Cuda_version.txt','w') as f:
+        f.write("\tCuda Version Bruh\t")
+        for i in range(len(key)):
+            text=str(key[i])+"\t:\t"+str(val[i])+"\n"
+            f.write(text)
+    print("Success")
 
 # print(val)
 # pprint(compute_compatibility)
