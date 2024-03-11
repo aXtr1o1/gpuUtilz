@@ -42,10 +42,12 @@ for x in table:
         val.append(row_vals[1:])
 
 
-with open('Cuda_version.txt','w') as f:
-    f.write("\tCuda Version Bruh\t")
+with open('CUDA_version.txt','w') as f:
+    f.write("\t\t\t\tCuda Version Bruh\t\n")
     for i in range(len(key)):
-        text=str(key[i])+"\t:\t"+str(val[i])+"\n"
+        value=[x for x in val[i] if x !='']
+        value = [x.replace('\xa0K1','').replace('\xa0TX1','').replace('\xa0','') if '\xa0K1' in x or '\xa0TX1' in x or '\xa0' in x  else x   for x in value]
+        text=str(key[i])+"\t:\t"+str(value)+"\n"
         f.write(text)
 print("Success")
 
