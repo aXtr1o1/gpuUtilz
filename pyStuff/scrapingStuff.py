@@ -1,5 +1,3 @@
-from pprint import pprint
-from lxml import etree
 from colorama import Fore, Style
 from tqdm import tqdm
 from tabulate import tabulate
