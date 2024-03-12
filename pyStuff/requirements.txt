@@ -2,3 +2,4 @@ bs4==0.0.2
 colorama==0.4.6
 tqdm==4.66.2
 requests==2.31.0
+kivy==2.3.0
