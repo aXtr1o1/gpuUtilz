@@ -13,9 +13,12 @@ cudnn_list = BeautifulSoup(cudnn_archive.text,'html.parser')
 list_contents = cudnn_list.find("div",class_="panel-group")
 a_tag_list = [a.get_text(strip=True) for a in list_contents.find_all('a') if a.get_text(strip=True).startswith("Download") ]
 if not os.path.exists("CUDNN_Version.txt"):
-    with open("CUDNN_Version.txt","w") as file:
+    with open("CUDNN_Version.txt","w") as CudnnFile:
+        CudnnFile.write("\t\t\t\tCUDNN Version Bro\t\n")
         for item in a_tag_list:
-            file.write("%s\n"%item)
+            # cudnnValue = [x for x in item if x != '']
+            cudnn_text = str(item)+"\t"+'\n'
+            CudnnFile.write(cudnn_text)
         print("File Written Successfully")
 
 cuda_table = BeautifulSoup(wiki_webpage.text,'html.parser')
