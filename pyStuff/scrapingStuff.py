@@ -35,15 +35,15 @@ for x in table:
         for td in x.find_all('td'):
             row_vals.append(td.text.strip())
         val.append(row_vals[1:])
-
-with open('CUDA_version.txt','w') as f:
-    f.write("\t\t\t\tCuda Version Bruh\t\n")
-    for i in range(len(key)):
-        value=[x for x in val[i] if x !='']
-        value = [x.replace('\xa0K1','').replace('\xa0TX1','').replace('\xa0','') if '\xa0K1' in x or '\xa0TX1' in x or '\xa0' in x  else x   for x in value]
-        text=str(key[i])+"\t:\t"+str(value)+"\n"
-        f.write(text)
-print("Success")
+if not os.path.exists("CUDA_version.txt"):
+    with open('CUDA_version.txt','w') as f:
+        f.write("\t\t\t\tCuda Version Bruh\t\n")
+        for i in range(len(key)):
+            value=[x for x in val[i] if x !='']
+            value = [x.replace('\xa0K1','').replace('\xa0TX1','').replace('\xa0','') if '\xa0K1' in x or '\xa0TX1' in x or '\xa0' in x  else x   for x in value]
+            text=str(key[i])+"\t:\t"+str(value)+"\n"
+            f.write(text)
+    print("Success")
 
 
 # print(val)
