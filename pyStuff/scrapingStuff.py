@@ -5,6 +5,7 @@ from tabulate import tabulate
 from bs4 import BeautifulSoup
 import requests
 import csv
+import os
 
 wiki_webpage = requests.get('https://en.wikipedia.org/wiki/CUDA')
 cudnn_archive = requests.get("https://developer.nvidia.com/rdp/cudnn-archive")
@@ -23,11 +24,12 @@ cudnn_contents = [x.split("for") for x in cudnn_archive_list]
 cudnn_contents = [[sublist.replace('\n','').replace('\t','') for sublist in megalist] for megalist in cudnn_contents]
 
 #Adding the Waterwashed data in a CSV file#
-with open("cuDNN_CUDA_Version_Compatibility.csv",'w') as cudnn_csv:
-    header = ['cuDNN Version','CUDA Version']
-    data = csv.writer(cudnn_csv)
-    data.writerow(header)
-    data.writerows(cudnn_contents)
+if not os.exist("cuDNN_CUDA_Version_Compatibility.csv"):
+    with open("cuDNN_CUDA_Version_Compatibility.csv",'w') as cudnn_csv:
+        header = ['cuDNN Version','CUDA Version']
+        data = csv.writer(cudnn_csv)
+        data.writerow(header)
+        data.writerows(cudnn_contents)
 
 cuda_table = BeautifulSoup(wiki_webpage.text,'html.parser')
 table_contents = cuda_table.find_all("table",class_="wikitable")
