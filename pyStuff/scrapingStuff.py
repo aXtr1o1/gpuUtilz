@@ -29,32 +29,32 @@ with open("cuDNN_CUDA_Version_Compatibility.csv",'w') as cudnn_csv:
     data.writerow(header)
     data.writerows(cudnn_contents)
 
-cuda_table = BeautifulSoup(wiki_webpage.text,'html.parser')
-table_contents = cuda_table.find_all("table",class_="wikitable")
+# cuda_table = BeautifulSoup(wiki_webpage.text,'html.parser')
+# table_contents = cuda_table.find_all("table",class_="wikitable")
 
-compute_compatibility = table_contents[1]
-Nvidia_GPU_BoardProducts = table_contents[2]
+# compute_compatibility = table_contents[1]
+# Nvidia_GPU_BoardProducts = table_contents[2]
 
-text=""
-table=Nvidia_GPU_BoardProducts.find_all('tr')
-table=table[1:]
-key= [x.find('td').text.strip() for x in table if x.find('td')]
-val=[]
-for x in table:
-    if x.find('td'):
-        row_vals = []
-        for td in x.find_all('td'):
-            row_vals.append(td.text.strip())
-        val.append(row_vals[1:])
+# text=""
+# table=Nvidia_GPU_BoardProducts.find_all('tr')
+# table=table[1:]
+# key= [x.find('td').text.strip() for x in table if x.find('td')]
+# val=[]
+# for x in table:
+#     if x.find('td'):
+#         row_vals = []
+#         for td in x.find_all('td'):
+#             row_vals.append(td.text.strip())
+#         val.append(row_vals[1:])
 
-with open('CUDA_version.txt','w') as f:
-    f.write("\t\t\t\tCuda Version Bruh\t\n")
-    for i in range(len(key)):
-        value=[x for x in val[i] if x !='']
-        value = [x.replace('\xa0K1','').replace('\xa0TX1','').replace('\xa0','') if '\xa0K1' in x or '\xa0TX1' in x or '\xa0' in x  else x   for x in value]
-        text=str(key[i])+"\t:\t"+str(value)+"\n"
-        f.write(text)
-print("Success")
+# with open('CUDA_version.txt','w') as f:
+#     f.write("\t\t\t\tCuda Version Bruh\t\n")
+#     for i in range(len(key)):
+#         value=[x for x in val[i] if x !='']
+#         value = [x.replace('\xa0K1','').replace('\xa0TX1','').replace('\xa0','') if '\xa0K1' in x or '\xa0TX1' in x or '\xa0' in x  else x   for x in value]
+#         text=str(key[i])+"\t:\t"+str(value)+"\n"
+#         f.write(text)
+# print("Success")
 
 # print(val)
 # pprint(compute_compatibility)
