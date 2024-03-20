@@ -79,17 +79,19 @@ for x in table:
 #         pprint(text)
 #         f.write(text)
 # print("Success")
+        
 Board_compt = []
 for i in range(len(key)):
         value=[x for x in val[i] if x !='']
         value = [x.replace('\xa0K1','').replace('\xa0TX1','').replace('\xa0','') if '\xa0K1' in x or '\xa0TX1' in x or '\xa0' in x  else x   for x in value]
-        text=str(key[i])+"\t:\t"+str(value)+"\n"
+        text=[key[i],value]
         Board_compt.append(text)
-pprint(Board_compt)
-# with open('Nvidia_GPU_Board_Compatibility.csv','w') as bcomp:
-#     bcomp_data = csv.writer(bcomp)
-#     bcomp_data.writerow(['Compute Capability (version)','Nvidia GPU Board'])
-#     bcomp_data.writerows
+        
+with open('Nvidia_GPU_Board_Compatibility.csv','w') as bcomp:
+    bcomp_data = csv.writer(bcomp)
+    bcomp_data.writerow(['Compute Capability (version)','Nvidia GPU Board'])
+    bcomp_data.writerows(Board_compt)
+
 
 # print(val)
 # pprint(compute_compatibility)
