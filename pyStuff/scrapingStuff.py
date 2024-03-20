@@ -21,7 +21,7 @@ cudnn_contents = [x.split("for") for x in cudnn_archive_list]
 cudnn_contents = [[sublist.replace('\n','').replace('\t','') for sublist in megalist] for megalist in cudnn_contents]
 
 #Adding the Waterwashed data in a CSV file#
-with open("CSV_Files\cuDNN_CUDA_Version_Compatibility.csv",'w') as cudnn_csv:
+with open("CSV_Files/cuDNN_CUDA_Version_Compatibility.csv",'w') as cudnn_csv:
     header = ['cuDNN Version','CUDA Version']
     data = csv.writer(cudnn_csv)
     data.writerow(header)
@@ -48,7 +48,7 @@ for i in compatibility_list:
     i.extend(['']*elements_to_add)
 
 #Adding the Scraped out compatibility data in a CSV file
-with open("CSV_Files\CUDA_Compute_Compatibility-CUDA SDK support vs Microarchitechture.csv",'w') as compat_csv:
+with open("CSV_Files/CUDA_Compute_Compatibility-CUDA SDK support vs Microarchitechture.csv",'w') as compat_csv:
     compat_data = csv.writer(compat_csv)
     compat_data.writerow([compute_compatibility.find('caption').text])
     compat_data.writerows(compatibility_list)
@@ -77,7 +77,7 @@ for i in range(len(key)):
         Board_compt.append(text)
 
 # Writing Down the Scrapped Data into a CSV File
-with open('CSV_Files\Nvidia_GPU_Board_Compatibility.csv','w') as bcomp:
+with open('CSV_Files/Nvidia_GPU_Board_Compatibility.csv','w') as bcomp:
     bcomp_data = csv.writer(bcomp)
     bcomp_data.writerow(['Compute Capability (version)','Nvidia GPU Board'])
     bcomp_data.writerows(Board_compt)
